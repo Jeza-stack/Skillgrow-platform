@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Grow - Educational Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #2563eb;
+            --academic-green: #059669;
+            --warm-orange: #ea580c;
+            --light-gray: #f8fafc;
+            --dark-gray: #334155;
+            --white: #ffffff;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: var(--primary-blue);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-text span {
+            color: var(--academic-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+        }
+
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            color: var(--dark-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--academic-green));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--warm-orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #d94606;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Courses Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .tag-blue {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .tag-green {
+            background-color: rgba(5, 150, 105, 0.1);
+            color: var(--academic-green);
+        }
+
+        .tag-orange {
+            background-color: rgba(234, 88, 12, 0.1);
+            color: var(--warm-orange);
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .course-description {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .units-list {
+            margin-top: 20px;
+        }
+
+        .units-list h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: var(--dark-gray);
+        }
+
+        .unit-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .unit-item:last-child {
+            border-bottom: none;
+        }
+
+        .unit-item i {
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+
+        /* Blog Section */
+        .blog-container {
+            background-color: #f1f5f9;
+            padding: 50px 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .blog-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-category {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--academic-green);
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-blue {
+            color: var(--primary-blue);
+        }
+
+        .feature-green {
+            color: var(--academic-green);
+        }
+
+        .feature-orange {
+            color: var(--warm-orange);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        /* Demo Content */
+        .demo-container {
+            padding: 50px 0;
+            background-color: #f1f5f9;
+        }
+
+        .demo-content {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .demo-title {
+            font-size: 1.8rem;
+            color: var(--dark-gray);
+        }
+
+        .demo-author {
+            color: #64748b;
+            font-style: italic;
+        }
+
+        .demo-text {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .highlighted-word {
+            color: var(--primary-blue);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .highlighted-word:hover::after {
+            content: attr(data-definition);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .audio-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-container {
+            margin-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 30px;
+        }
+
+        .quiz-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: left;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        .quiz-option:hover {
+            background-color: #f1f5f9;
+            border-color: var(--primary-blue);
+        }
+
+        .quiz-option.correct {
+            background-color: rgba(5, 150, 105, 0.1);
+            border-color: var(--academic-green);
+        }
+
+        .quiz-option.incorrect {
+            background-color: rgba(234, 88, 12, 0.1);
+            border-color: var(--warm-orange);
+        }
+
+        .quiz-explanation {
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 20px;
+                gap: 10px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-container {
+                width: 100%;
+                margin-top: 15px;
+                order: 3;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .course-card, .blog-card, .feature-card {
+                max-width: 100%;
+            }
+            
+            .demo-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="logo-text">Skill <span>Grow</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Courses</a>
+                <a href="#" class="nav-link">Blog</a>
+                <a href="#" class="nav-link">Resources</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search courses, blog posts...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Transform Your Skills with Personalized Learning</h1>
+            <p class="hero-subtitle">Skill Grow offers comprehensive educational resources for students and professionals to master literature, language skills, and essential soft skills for career success.</p>
+            
+            <div class="hero-btns">
+                <button class="btn btn-primary">Explore Courses</button>
+                <button class="btn btn-outline">Read Our Blog</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Featured Courses</h2>
+                <p>Comprehensive learning paths designed to enhance your academic and professional capabilities</p>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- English Literature I -->
+                <div class="course-card">
+                    <div class="course-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="course-content">
+                        <span class="course-tag tag-blue">Literature</span>
+                        <h3 class="course-title">English Literature I</h3>
+                        <p class="course-description">Enhance language proficiency with emphasis on LSRW (Listening, Speaking, Reading, Writing) skills.</p>
+                        
+                        <div class="units-list">
+                            <h4>Course Units:</h4>
+                            <div class="unit-item">
+                                <i class="fas fa-book"></i> Poetry: Don't Quit, The Sparrow, A Nation's Strength
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-book-open"></i> Prose: Father Forgets, On the Rule of the Road
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-bookmark"></i> Short Stories: The Faltering Pendulum, How I Taught My Grandmother to Read
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-language"></i> Language Competency: Vocabulary, Grammar, Error Correction
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">View Course</button>
+                    </div>
+                </div>
+                
+                <!-- English Literature III -->
+                <div class="course-card">
+                    <div class="course-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1491841573634-28140fc7ced7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="course-content">
+                        <span class="course-tag tag-green">Advanced</span>
+                        <h3 class="course-title">English Literature III</h3>
+                        <p class="course-description">Enhance reading skills, improve writing, and develop intellectual, personal, and professional abilities.</p>
+                        
+                        <div class="units-list">
+                            <h4>Course Units:</h4>
+                            <div class="unit-item">
+                                <i class="fas fa-book"></i> Poetry: The Voice of the Mountains, Sita, A Song of Hope
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-theater-masks"></i> Scenes From Shakespeare: Romeo & Juliet, Macbeth
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-microphone-alt"></i> Speeches: Tryst with Destiny, Yes We Can
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-briefcase"></i> English for Workplace: Data Interpretation, Meeting Etiquette
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">View Course</button>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills Development -->
+                <div class="course-card">
+                    <div class="course-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="course-content">
+                        <span class="course-tag tag-orange">Professional</span>
+                        <h3 class="course-title">Professional Soft Skills</h3>
+                        <p class="course-description">Develop essential soft skills for career advancement and professional success.</p>
+                        
+                        <div class="units-list">
+                            <h4>Key Areas:</h4>
+                            <div class="unit-item">
+                                <i class="fas fa-comments"></i> Communication Skills
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-users"></i> Leadership & Management
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-brain"></i> Emotional Intelligence
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-clock"></i> Time Management
+                            </div>
+                            <div class="unit-item">
+                                <i class="fas fa-lightbulb"></i> Problem Solving
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">View Resources</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-container">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest From Our Blog</h2>
+                <p>Practical insights and tips for developing essential soft skills</p>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-category">Communication Skills</div>
+                        <h3 class="blog-title">10 Essential Communication Skills for Career Success</h3>
+                        <p>Learn the top communication strategies that can accelerate your professional growth and enhance workplace relationships.</p>
+                        <div class="blog-meta">
+                            <div>July 12, 2025</div>
+                            <div class="read-time"><i class="far fa-clock"></i> 8 min read</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-category">Emotional Intelligence</div>
+                        <h3 class="blog-title">How to Develop Emotional Intelligence in the Workplace</h3>
+                        <p>Discover practical techniques to enhance your EQ and create more productive, harmonious work environments.</p>
+                        <div class="blog-meta">
+                            <div>July 5, 2025</div>
+                            <div class="read-time"><i class="far fa-clock"></i> 10 min read</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card">
+                    <div class="blog-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="blog-content">
+                        <div class="blog-category">Time Management</div>
+                        <h3 class="blog-title">Time Management Strategies for Busy Professionals</h3>
+                        <p>Effective techniques to maximize productivity, reduce stress, and achieve work-life balance in demanding careers.</p>
+                        <div class="blog-meta">
+                            <div>June 28, 2025</div>
+                            <div class="read-time"><i class="far fa-clock"></i> 7 min read</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-primary">View All Blog Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Learning Features</h2>
+                <p>Experience education enhanced with modern technology and pedagogy</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon feature-blue">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="feature-title">Interactive Content</h3>
+                    <p>Engage with literary works through enhanced reading experiences with integrated glossary and analysis.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon feature-green">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="feature-title">Audio Integration</h3>
+                    <p>Listen to texts with our text-to-speech functionality, adjustable speed, and synchronized highlighting.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon feature-orange">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="feature-title">Interactive Quizzes</h3>
+                    <p>Test your knowledge with immediate feedback and detailed explanations for each question.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon feature-blue">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">Expert Analysis</h3>
+                    <p>Deepen your understanding with comprehensive content analysis, themes, and literary device explanations.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon feature-green">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile-Friendly</h3>
+                    <p>Access all resources on any device with our responsive, mobile-first design approach.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon feature-orange">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Progress Tracking</h3>
+                    <p>Monitor your learning journey with personalized progress reports and achievement milestones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Content Section -->
+    <section class="demo-container">
+        <div class="container">
+            <div class="demo-content">
+                <div class="demo-header">
+                    <div>
+                        <h2 class="demo-title">"Don't Quit" by Edgar Albert Guest</h2>
+                        <p class="demo-author">From English Literature I Course</p>
+                    </div>
+                    <button class="btn btn-outline" style="background-color: var(--primary-blue); color: white;">View Full Analysis</button>
+                </div>
+                
+                <div class="demo-text">
+                    <p>When things go wrong, as they sometimes will,</p>
+                    <p>When the road you're <span class="highlighted-word" data-definition="Walking slowly with heavy steps">trudging</span> seems all uphill,</p>
+                    <p>When the funds are low and the debts are high,</p>
+                    <p>And you want to smile, but you have to sigh,</p>
+                    <p>When care is pressing you down a bit,</p>
+                    <p>Rest, if you must—but don't you quit.</p>
+                    <br>
+                    <p>Life is queer with its twists and turns,</p>
+                    <p>As every one of us sometimes learns,</p>
+                    <p>And many a failure turns about</p>
+                    <p>When he might have won had he stuck it out;</p>
+                    <p>Don't give up though the pace seems slow—</p>
+                    <p>You may succeed with another blow.</p>
+                </div>
+                
+                <div class="audio-controls">
+                    <button class="audio-btn"><i class="fas fa-play"></i></button>
+                    <button class="audio-btn"><i class="fas fa-pause"></i></button>
+                    <button class="audio-btn"><i class="fas fa-stop"></i></button>
+                    
+                    <div class="speed-control">
+                        <label>Speed:</label>
+                        <input type="range" min="0.5" max="2" step="0.1" value="1">
+                        <span>1x</span>
+                    </div>
+                    
+                    <button class="btn" style="margin-left: auto;"><i class="fas fa-download"></i> Download Audio</button>
+                </div>
+                
+                <div class="quiz-container">
+                    <h3 class="quiz-title">Test Your Understanding</h3>
+                    
+                    <div class="quiz-question">
+                        <p>What is the central theme of "Don't Quit"?</p>
+                        <div class="quiz-options">
+                            <div class="quiz-option">Love and romance</div>
+                            <div class="quiz-option correct">Perseverance and resilience</div>
+                            <div class="quiz-option">Nature and beauty</div>
+                            <div class="quiz-option">Social justice</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> The poem's central theme is perseverance and resilience in the face of adversity. It encourages readers to keep going even when facing difficulties.
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p>What does the poet suggest you do when "care is pressing you down a bit"?</p>
+                        <div class="quiz-options">
+                            <div class="quiz-option">Quit immediately</div>
+                            <div class="quiz-option">Blame others</div>
+                            <div class="quiz-option correct">Rest if you must but don't quit</div>
+                            <div class="quiz-option">Complain loudly</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="logo-text" style="color: white;">Skill <span style="color: var(--academic-green);">Grow</span></div>
+                    </div>
+                    <p style="color: #cbd5e1; margin-bottom: 20px;">Empowering students and professionals with comprehensive educational resources and skill development tools.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Courses</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">English Literature I</a></li>
+                        <li><a href="#">English Literature III</a></li>
+                        <li><a href="#">Professional Communication</a></li>
+                        <li><a href="#">Leadership Development</a></li>
+                        <li><a href="#">Emotional Intelligence</a></li>
+                        <li><a href="#">Time Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Education St, Learnville</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@skillgrow.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Skill Grow Educational Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Demo glossary hover effect
+        const highlightedWords = document.querySelectorAll('.highlighted-word');
+        highlightedWords.forEach(word => {
+            word.addEventListener('mouseenter', function() {
+                this.style.textDecoration = 'underline';
+            });
+            
+            word.addEventListener('mouseleave', function() {
+                this.style.textDecoration = 'none';
+            });
+        });
+        
+        // Quiz functionality
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        quizOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove any existing active classes
+                quizOptions.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+                
+                // Add appropriate class
+                if (this.classList.contains('correct')) {
+                    this.classList.add('correct');
+                } else {
+                    this.classList.add('incorrect');
+                }
+                
+                // Show explanation if available
+                const explanation = this.closest('.quiz-question').querySelector('.quiz-explanation');
+                if (explanation) {
+                    explanation.style.display = 'block';
+                }
+            });
+        });
+        
+        // Simulate audio controls
+        const audioBtns = document.querySelectorAll('.audio-btn');
+        audioBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else if (icon.classList.contains('fa-pause')) {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+            });
+        });
+        
+        // Speed control display
+        const speedControl = document.querySelector('.speed-control input');
+        const speedValue = document.querySelector('.speed-control span');
+        speedControl.addEventListener('input', function() {
+            speedValue.textContent = this.value + 'x';
+        });
+    </script>
+</body>
+</html>
